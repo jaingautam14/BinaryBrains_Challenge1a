@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["title", "outline", "language", "total_pages"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The main title of the document extracted from the first page or header"
+    },
+    "total_pages": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total number of pages in the PDF document"
+    },
+    "language": {
+      "type": "object",
+      "description": "Detected language information",
+      "required": ["primary", "confidence"],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "description": "Primary detected language code (ISO 639-1)",
+          "pattern": "^[a-z]{2}$"
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Confidence score for language detection (0-1)",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "additional": {
+          "type": "array",
+          "description": "Additional detected languages with confidence scores",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": "string",
+                "pattern": "^[a-z]{2}$"
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "outline": {
+      "type": "array",
+      "description": "Hierarchical outline of the document with heading levels",
+      "items": {
+        "type": "object",
+        "required": ["level", "text", "page"],
+        "properties": {
+          "level": {
+            "type": "string",
+            "enum": ["H1", "H2", "H3", "H4", "H5", "H6"],
+            "description": "Heading level (H1 through H6)"
+          },
+          "text": {
+            "type": "string",
+            "description": "The text content of the heading"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "One-based page number where the heading appears"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

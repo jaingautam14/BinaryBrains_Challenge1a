@@ -1,0 +1,27 @@
+# PDF Processing and Text Extraction
+PyPDF2==3.0.1
+pdfplumber==0.10.3
+pymupdf==1.23.26
+
+# OCR Capabilities for image-based PDFs
+pytesseract==0.3.10
+Pillow==10.1.0
+pdf2image==1.16.3
+
+# Text Processing and Analysis
+spacy==3.7.2
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+
+# Language Detection
+langdetect==1.0.9
+polyglot==16.7.4
+
+# Performance and Optimization
+numpy==1.24.4
+multiprocessing-logging==0.3.4
+
+# JSON Schema Validation
+jsonschema==4.20.0
+
+# Logging and Debugging
+loguru==0.7.2
